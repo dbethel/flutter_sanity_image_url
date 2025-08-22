@@ -1,8 +1,9 @@
 name: flutter_sanity_image_url
-description: Flutter plugin for displaying images from Santiy CMS. Also provides useful image metadata such as low quality image placeholders, and image color palette.
+description: A fork of flutter_sanity_image_url - Flutter package for displaying images from Sanity CMS with useful metadata like LQIP and color palette. Install from GitHub.
 version: 0.1.0
-homepage: https://github.com/techurve/flutter_sanity_image_url
-repository: https://github.com/techurve/flutter_sanity_image_url
+homepage: https://github.com/dbethel/flutter_sanity_image_url
+repository: https://github.com/dbethel/flutter_sanity_image_url
+issue_tracker: https://github.com/dbethel/flutter_sanity_image_url/issues
 
 environment:
   sdk: ">=2.17.1 <4.0.0"

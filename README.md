@@ -1,24 +1,19 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Sanity Image URL (Fork)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+![GitHub](https://img.shields.io/badge/source-GitHub-blue)
+![Version](https://img.shields.io/badge/version-0.1.0-green)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+A Flutter package for generating Sanity image URLs with advanced image handling capabilities.
 
-# Flutter Sanity Image URL
+**Note: This is a fork of the original `flutter_sanity_image_url` package.** This version includes additional features and fixes that are not available in the published version. Since this fork is not published to pub.dev, it must be installed directly from GitHub.
 
-![Static Badge](https://img.shields.io/badge/pub-v0.0.2-blue)
+## Original Attribution
 
-A dart package to quickly generate sanity image urls.
-Ported from [sanity-io/image-url](https://github.com/sanity-io/image-url).
+This package is originally ported from [sanity-io/image-url](https://github.com/sanity-io/image-url) and is intended to be used together with the [flutter_sanity package](https://pub.dev/packages/flutter_sanity).
 
-Intented to be used together with the [flutter_sanity package](https://pub.dev/packages/flutter_sanity)
+## Why This Fork?
+
+This fork exists to provide additional features, bug fixes, or improvements that may not be available in the original published package. Since the changes are specific to certain use cases and may not be suitable for the main package, this fork is maintained separately.
 
 ## Features
 
@@ -31,13 +26,28 @@ Easily make use of all of the image related features provided by Sanity:
   - Access to `lqip` to implement low resolution image placeholders.
 
 <p align="center">
-    <img width="200px" src="https://raw.githubusercontent.com/techurve/flutter_sanity_image_url/improve-package/assets/screenshot.png"/>
+    <img width="200px" src="https://raw.githubusercontent.com/dbethel/flutter_sanity_image_url/main/assets/screenshot.png"/>
 </p>
 
-## Getting started
+## Installation
+
+Since this is a fork and not published to pub.dev, you need to install it directly from GitHub.
+
+Add the following to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter_sanity: ^any # Install from pub.dev
+  flutter_sanity_image_url:
+    git:
+      url: https://github.com/dbethel/flutter_sanity_image_url.git
+      ref: main # or specify a specific branch/tag
+```
+
+Then run:
 
 ```bash
-dart pub add flutter_sanity flutter_sanity_image_url
+flutter pub get
 ```
 
 ## Usage
@@ -71,18 +81,20 @@ Image.network(urlFor(image).size(200, 200).url())
 ### Accessing the image color palette data
 
 Available colors in the pallette:
-+ `darkMuted`
-+ `darkVibrant`
-+ `dominant`
-+ `lightMuted`
-+ `lightVibrant`
-+ `muted`
-+ `vibrant`
+
+- `darkMuted`
+- `darkVibrant`
+- `dominant`
+- `lightMuted`
+- `lightVibrant`
+- `muted`
+- `vibrant`
 
 Each has color has the attributes:
-+ `background`
-+ `foreground`
-+ `title`
+
+- `background`
+- `foreground`
+- `title`
 
 Example of using the color pallette for an image:
 
