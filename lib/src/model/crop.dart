@@ -3,11 +3,7 @@ import 'package:flutter_sanity_image_url/src/model/reference_data.dart';
 /// A Crop for an Image.
 /// Based on cropping values from left, right, top and bottom.
 class Crop {
-  Crop(
-      {required this.bottom,
-      required this.left,
-      required this.right,
-      required this.top});
+  Crop({required this.bottom, required this.left, required this.right, required this.top});
 
   double left;
   double right;
@@ -20,10 +16,7 @@ class Crop {
     final cropLeft = (left * asset.width).round();
     final cropTop = (top * asset.height).round();
 
-    return LTWH(
-        cropLeft,
-        cropTop,
-        (asset.width - right * asset.width - cropLeft).round(),
+    return LTWH(cropLeft, cropTop, (asset.width - right * asset.width - cropLeft).round(),
         (asset.height - bottom * asset.height - cropTop).round());
   }
 
@@ -34,6 +27,30 @@ class Crop {
         top: double.tryParse(json['top'].toString()) ?? 0,
         right: double.tryParse(json['right'].toString()) ?? 0,
         bottom: double.tryParse(json['bottom'].toString()) ?? 0);
+  }
+
+  /// Factory method that can handle various input types for Crop data.
+  ///
+  /// Accepts:
+  /// - `null` → returns `null`
+  /// - `Map<String, dynamic>` → parses using `fromJson`
+  /// - `Crop` object → returns as-is
+  /// - Any other type → throws a descriptive error
+  static Crop? fromDynamic(dynamic data) {
+    if (data == null) {
+      return null;
+    }
+
+    if (data is Crop) {
+      return data;
+    }
+
+    if (data is Map<String, dynamic>) {
+      return Crop.fromJson(data);
+    }
+
+    throw Exception('Invalid type for Crop data: ${data.runtimeType}. '
+        'Expected null, Map<String, dynamic>, or Crop object.');
   }
 }
 

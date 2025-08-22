@@ -27,10 +27,31 @@ class Hotspot {
 
   /// creates a [Hotspot] object from the passed [json].
   static Hotspot fromJson(Map<String, dynamic> json) {
-    return Hotspot(
-        double.tryParse(json['height'].toString()) ?? 1,
-        double.tryParse(json['width'].toString()) ?? 1,
-        json['x'] ?? 0.5,
-        json['y'] ?? 0.5);
+    return Hotspot(double.tryParse(json['height'].toString()) ?? 1, double.tryParse(json['width'].toString()) ?? 1,
+        json['x'] ?? 0.5, json['y'] ?? 0.5);
+  }
+
+  /// Factory method that can handle various input types for Hotspot data.
+  ///
+  /// Accepts:
+  /// - `null` → returns `null`
+  /// - `Map<String, dynamic>` → parses using `fromJson`
+  /// - `Hotspot` object → returns as-is
+  /// - Any other type → throws a descriptive error
+  static Hotspot? fromDynamic(dynamic data) {
+    if (data == null) {
+      return null;
+    }
+
+    if (data is Hotspot) {
+      return data;
+    }
+
+    if (data is Map<String, dynamic>) {
+      return Hotspot.fromJson(data);
+    }
+
+    throw Exception('Invalid type for Hotspot data: ${data.runtimeType}. '
+        'Expected null, Map<String, dynamic>, or Hotspot object.');
   }
 }

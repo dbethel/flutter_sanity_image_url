@@ -21,8 +21,7 @@ abstract class SanityImageSource {
     final refSplit = id.split('-');
 
     if (refSplit.length != 4) {
-      throw Exception(
-          'Malformed asset _ref "$ref". Expected an id like "$example".');
+      throw Exception('Malformed asset _ref "$ref". Expected an id like "$example".');
     }
 
     final dimensions = refSplit[2].split('x');
@@ -38,8 +37,7 @@ abstract class SanityImageSource {
 /// Contains the [SanityAsset], which is the minimum information needed to show an image.
 /// Also contains the [Crop] and [Hotspot] which signal how to format the image.
 class SanityImage extends SanityImageSource {
-  const SanityImage({required String ref, this.c, this.h, this.asset})
-      : super(id: ref);
+  const SanityImage({required String ref, this.c, this.h, this.asset}) : super(id: ref);
 
   final SanityAsset? asset;
   final Crop? c;
@@ -97,8 +95,7 @@ class SanityImage extends SanityImageSource {
     }
 
     // nothing matched.
-    throw Exception(
-        'unable to parse SanityImage from ${json.toString()}, try to change your query.');
+    throw Exception('unable to parse SanityImage from ${json.toString()}, try to change your query.');
   }
 
   /// parses a [json] with image data.
@@ -106,8 +103,8 @@ class SanityImage extends SanityImageSource {
   static SanityImage _fromImageQuery(Map<String, dynamic> json) {
     return SanityImage(
       ref: json['asset']['_ref'],
-      c: json['crop'],
-      h: json['hotspot'],
+      c: Crop.fromDynamic(json['crop']),
+      h: Hotspot.fromDynamic(json['hotspot']),
     );
   }
 
@@ -126,12 +123,8 @@ class SanityImage extends SanityImageSource {
     return SanityImage(
       ref: json['image']['asset']['_ref'],
       asset: SanityAsset.fromJson(json['asset']),
-      c: json['image']?['crop'] == null
-          ? null
-          : Crop.fromJson(json['image']?['crop']),
-      h: json['image']?['hotspot'] == null
-          ? null
-          : Hotspot.fromJson(json['image']?['hotspot']),
+      c: Crop.fromDynamic(json['image']?['crop']),
+      h: Hotspot.fromDynamic(json['image']?['hotspot']),
     );
   }
 

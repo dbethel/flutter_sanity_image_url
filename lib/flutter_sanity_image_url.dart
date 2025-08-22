@@ -1,5 +1,9 @@
 export 'src/builder.dart';
+export 'src/model/crop.dart';
+export 'src/model/hotspot.dart';
+export 'src/model/reference_data.dart';
+export 'src/model/sanity_asset.dart';
+export 'src/model/sanity_color.dart';
 export 'src/model/sanity_image.dart';
 export 'src/model/sanity_palette.dart';
-export 'src/model/sanity_asset.dart';
 export 'src/image_placeholder.dart';
